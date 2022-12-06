@@ -15,16 +15,19 @@ import org.gusdb.wdk.model.question.CategoryQuestionRef;
 import org.gusdb.wdk.model.question.SearchCategory;
 
 /**
- * A temporary class to adapt from the eupath categories ontology to the wdk categories objects. Will be
+ * A temporary class to adapt from the eupath categories ontology to the wdk
+ * categories objects. Will be
  * retired when the client no longer uses wdk categories
  *
  * Exposes a couple of public methods used by the WDK to serve out categories
  *
- * For each usedBy (website, webservice, datasets), make a per-recordclass root searchcategory.
+ * For each usedBy (website, webservice, datasets), make a per-recordclass root
+ * searchcategory.
  *
  * For genes, add to that the category tree found in the ontology
  *
- * For non-genes, add to that one additional category, with the display name of the record class
+ * For non-genes, add to that one additional category, with the display name of
+ * the record class
  *
  * Individuals are added to the leaf categories as question refs
  *
@@ -77,38 +80,40 @@ public class EuPathCategoriesFactory {
   };
 
   private String[][] clinepiRecordClassInfo = {
-      //old ... deprecated?
+      // old ... deprecated?
       { "Participants", "ParticipantRecordClasses.ParticipantRecordClass" },
       { "Dwellings", "DwellingRecordClasses.DwellingRecordClass" },
       { "Clinical Visits", "ClinicalVisitRecordClasses.ClinicalVisitRecordClass" },
-      //PRISM
+      // PRISM
       { "Participants", "DS_0ad509829eParticipantRecordClasses.DS_0ad509829eParticipantRecordClass" },
       { "Households", "DS_0ad509829eHouseholdRecordClasses.DS_0ad509829eHouseholdRecordClass" },
       { "Observations", "DS_0ad509829eObservationRecordClasses.DS_0ad509829eObservationRecordClass" },
       { "CDC Light Traps", "DS_0ad509829eLightTrapRecordClasses.DS_0ad509829eLightTrapRecordClass" },
-      //PRISM2
+      // PRISM2
       { "Participants", "DS_51b40fe2e2ParticipantRecordClasses.DS_51b40fe2e2ParticipantRecordClass" },
       { "Households", "DS_51b40fe2e2HouseholdRecordClasses.DS_51b40fe2e2HouseholdRecordClass" },
       { "Observations", "DS_51b40fe2e2ObservationRecordClasses.DS_51b40fe2e2ObservationRecordClass" },
       { "CDC Light Traps", "DS_51b40fe2e2LightTrapRecordClasses.DS_51b40fe2e2LightTrapRecordClass" },
-      //India longitudinal
+      // India longitudinal
       { "Participants", "DS_05ea525fd3ParticipantRecordClasses.DS_05ea525fd3ParticipantRecordClass" },
       { "Observations", "DS_05ea525fd3ObservationRecordClasses.DS_05ea525fd3ObservationRecordClass" },
-      //      { "Households", "DS_05ea525fd3HouseholdRecordClasses.DS_05ea525fd3HouseholdRecordClass" },
-      //India cross sectional
+      // { "Households",
+      // "DS_05ea525fd3HouseholdRecordClasses.DS_05ea525fd3HouseholdRecordClass" },
+      // India cross sectional
       { "Participants", "DS_a5c969d5faParticipantRecordClasses.DS_a5c969d5faParticipantRecordClass" },
       { "Observations", "DS_a5c969d5faObservationRecordClasses.DS_a5c969d5faObservationRecordClass" },
-      //      { "Households", "DS_a5c969d5faHouseholdRecordClasses.DS_a5c969d5faHouseholdRecordClass" },
-      //India Fever study
+      // { "Households",
+      // "DS_a5c969d5faHouseholdRecordClasses.DS_a5c969d5faHouseholdRecordClass" },
+      // India Fever study
       { "Participants", "DS_4902d9b7ecParticipantRecordClasses.DS_4902d9b7ecParticipantRecordClass" },
-      //GEMs 
+      // GEMs
       { "Participants", "DS_841a9f5259ParticipantRecordClasses.DS_841a9f5259ParticipantRecordClass" },
-      //GEMs1a 
+      // GEMs1a
       { "Participants", "DS_2a6ace17a1ParticipantRecordClasses.DS_2a6ace17a1ParticipantRecordClass" },
-      //Maled DCC phase2
+      // Maled DCC phase2
       { "Participants", "DS_3dbf92dc05ParticipantRecordClasses.DS_3dbf92dc05ParticipantRecordClass" },
       { "Observations", "DS_3dbf92dc05ObservationRecordClasses.DS_3dbf92dc05ObservationRecordClass" },
-      //Maled 60m
+      // Maled 60m
       { "Participants", "DS_5c41b87221ParticipantRecordClasses.DS_5c41b87221ParticipantRecordClass" },
       { "Observations", "DS_5c41b87221ObservationRecordClasses.DS_5c41b87221ObservationRecordClass" },
       // south asia
@@ -117,9 +122,9 @@ public class EuPathCategoriesFactory {
       // amazonia peru
       { "Participants", "DS_897fe55e6fParticipantRecordClasses.DS_897fe55e6fParticipantRecordClass" },
       { "Observations", "DS_897fe55e6fObservationRecordClasses.DS_897fe55e6fObservationRecordClass" },
-      //SCORE
+      // SCORE
       { "Participants", "DS_d6a1141fbfParticipantRecordClasses.DS_d6a1141fbfParticipantRecordClass" },
-      //Southern Africa
+      // Southern Africa
       { "Participants", "DS_a83d9defbbParticipantRecordClasses.DS_a83d9defbbParticipantRecordClass" },
   };
 
@@ -142,19 +147,28 @@ public class EuPathCategoriesFactory {
     Ontology ontology = model.getOntology("Categories");
 
     // Gene questions for menus
-    processPrimaryCategoryQuestions(ontology, scopes(MENU), "Genes",
-        "TranscriptRecordClasses.TranscriptRecordClass", websiteCategories, websiteRootCategories);
+    // processPrimaryCategoryQuestions(ontology, scopes(MENU), "Genes",
+    // "TranscriptRecordClasses.TranscriptRecordClass", websiteCategories,
+    // websiteRootCategories);
+    // FOR ERYTHRONDB - EGA
+    processPrimaryCategoryQuestions(ontology, scopes(MENU), "Mouse Genes",
+        "MouseGeneRecordClasses.MouseGeneRecordClass", websiteCategories, websiteRootCategories);
+    processPrimaryCategoryQuestions(ontology, scopes(MENU), "Human Genes",
+        "HumanGeneRecordClasses.HumanGeneRecordClass", websiteCategories, websiteRootCategories);
+
     // sort using ontology's sorting order, if present, else alphabetical.
     for (SearchCategory category : websiteCategories.values()) {
-      // set the display name in the ref, so it can be used for sorting. ignore questions not found in model
+      // set the display name in the ref, so it can be used for sorting. ignore
+      // questions not found in model
       for (CategoryQuestionRef ref : category.getQuestionRefs()) {
         try {
           ref.setQuestionDisplayName(model
               .getQuestionByFullName(ref.getQuestionFullName())
-              .orElseThrow(() -> new WdkModelException("Categories ontology contains invalid question name ref '" + ref.getQuestionFullName() + "'."))
+              .orElseThrow(() -> new WdkModelException(
+                  "Categories ontology contains invalid question name ref '" + ref.getQuestionFullName() + "'."))
               .getDisplayName());
+        } catch (WdkModelException e) {
         }
-        catch (WdkModelException e) {}
       }
       List<CategoryQuestionRef> questionRefs = new ArrayList<CategoryQuestionRef>(category.getQuestionRefs());
       Collections.sort(questionRefs);
@@ -174,16 +188,28 @@ public class EuPathCategoriesFactory {
     // non-gene questions
     String[][] infos;
     switch (model.getProjectId()) {
-      case "MicrobiomeDB": infos = mbioRecordClassInfo;    break;
-      case "AllClinEpiDB":    infos = clinepiRecordClassInfo; break;
-      case "ClinEpiDB":    infos = clinepiRecordClassInfo; break;
-      case "Gates":        infos = clinepiRecordClassInfo; break;
-      case "ICEMR":        infos = clinepiRecordClassInfo; break;
-      default:             infos = otherRecordClassInfo;
+      case "MicrobiomeDB":
+        infos = mbioRecordClassInfo;
+        break;
+      case "AllClinEpiDB":
+        infos = clinepiRecordClassInfo;
+        break;
+      case "ClinEpiDB":
+        infos = clinepiRecordClassInfo;
+        break;
+      case "Gates":
+        infos = clinepiRecordClassInfo;
+        break;
+      case "ICEMR":
+        infos = clinepiRecordClassInfo;
+        break;
+      default:
+        infos = otherRecordClassInfo;
     }
-    
+
     for (String[] recordClassInfo : infos) {
-      TreeNode<OntologyNode> prunedOntologyTree = findPrunedOntology(ontology, recordClassInfo[1], scopes(MENU, WEBSERVICE));
+      TreeNode<OntologyNode> prunedOntologyTree = findPrunedOntology(ontology, recordClassInfo[1],
+          scopes(MENU, WEBSERVICE));
       if (prunedOntologyTree == null)
         continue;
       List<Map<String, SearchCategory>> mapList = new ArrayList<Map<String, SearchCategory>>();
@@ -219,7 +245,8 @@ public class EuPathCategoriesFactory {
     List<Map<String, SearchCategory>> mapList = new ArrayList<Map<String, SearchCategory>>();
     mapList.add(categoriesMap);
 
-    // map the pruned ontology to a new root search category. the root category holds the record class (for
+    // map the pruned ontology to a new root search category. the root category
+    // holds the record class (for
     // this scope)
     SearchCategory rootCategory = prunedOntologyTree.mapStructure(
         new TreeNodeToSeachCategoryMapper(mapList, true));
@@ -254,7 +281,8 @@ public class EuPathCategoriesFactory {
       // if 0 mapped children, we have an individual.
       // the SearchCategory tree is non-uniform. individuals are not nodes.
       // because we run bottom-up, we have to temporarily pretend it is.
-      // so make fake SearchCategory to hold an individual. will fix when we build parent
+      // so make fake SearchCategory to hold an individual. will fix when we build
+      // parent
       // steal the isFlattenInMenu flag to indicate this.
       if (mappedChildren.size() == 0) {
         category.setFlattenInMenu(true); // a hacked flag to indicate this is an individual
@@ -277,10 +305,12 @@ public class EuPathCategoriesFactory {
         category.setDescription(
             nodeContents.containsKey("hasDefinition") ? nodeContents.get("hasDefinition").get(0) : null);
         String displayName = nodeContents.containsKey("EuPathDB alternative term")
-            ? nodeContents.get("EuPathDB alternative term").get(0) : null;
+            ? nodeContents.get("EuPathDB alternative term").get(0)
+            : null;
         category.setDisplayName(displayName);
         category.setShortDisplayName(nodeContents.containsKey("shortDisplayName")
-            ? nodeContents.get("shortDisplayName").get(0) : null);
+            ? nodeContents.get("shortDisplayName").get(0)
+            : null);
         category.setName(nodeContents.containsKey("name") ? nodeContents.get("name").get(0) : displayName);
 
         // handle mapped children
@@ -298,7 +328,8 @@ public class EuPathCategoriesFactory {
             if (isGenes)
               category.addChild(kid);
 
-            // for non-genes, move question refs up to new search category, because we want to end up with
+            // for non-genes, move question refs up to new search category, because we want
+            // to end up with
             // only one level
             else
               for (CategoryQuestionRef qr : kid.getQuestionRefs())
